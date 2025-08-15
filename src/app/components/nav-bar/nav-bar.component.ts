@@ -34,17 +34,18 @@ export class NavBarComponent {
     {
       label: 'Tauler',
       icon: 'pi pi-home',
-      routerLink: '/tauler'
+      routerLink: '/private/dashboard',
+      routerLinkActiveOptions: { exact: true }
     },
     {
       label: 'Granges',
       icon: 'pi pi-building',
-      routerLink: '/granges'
+      routerLink: '/private/farm',
     },
     {
       label: 'Lots',
       icon: 'pi pi-box',
-      routerLink: '/lots'
+      routerLink: '/private/lots'
     },
     {
       label: 'Entrades',
@@ -65,7 +66,8 @@ export class NavBarComponent {
       label: 'GTR',
       icon: 'pi pi-database',
       routerLink: '/gtr'
-    }
+    },
+    
   ];
 
   toggleMenu(event: Event) {

@@ -1,72 +1,145 @@
-<div class="container mx-auto p-4">
-  <div class="text-2xl font-semibold mb-4">Benvingut de nou, Maria</div>
-  <div class="text-gray-600 mb-4">Aquí tens un resum de la teva activitat agrícola.</div>
+<div >
+  <!-- Encabezado -->
+  <h1 class="text-2xl font-bold mb-1">Bienvenido de nuevo, Maria</h1>
+  <p class="text-gray-600 mb-6">
+    Aquí tens un resum de la teva activitat agrícola.
+  </p>
 
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-4">
-    <div class="bg-white rounded-md shadow-md p-4">
-      <div class="text-gray-600">Total Granges</div>
-      <div class="text-3xl font-semibold">12</div>
-      <i class="pi pi-home text-green-500"></i>
-    </div>
-    <div class="bg-white rounded-md shadow-md p-4">
-      <div class="text-gray-600">Lots Actius</div>
-      <div class="text-3xl font-semibold">48</div>
-      <i class="pi pi-map-marker text-blue-500"></i>
-    </div>
-    <div class="bg-white rounded-md shadow-md p-4">
-      <div class="text-gray-600">Entrades Recents</div>
-      <div class="text-3xl font-semibold">156</div>
-      <i class="pi pi-truck text-orange-500"></i>
-    </div>
-    <div class="bg-white rounded-md shadow-md p-4">
-      <div class="text-gray-600">Visites Pendents</div>
-      <div class="text-3xl font-semibold">8</div>
-      <i class="pi pi-calendar text-purple-500"></i>
-    </div>
+  <!-- Tarjetas estadísticas -->
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+    <p-card class="shadow-sm">
+      <div class="flex flex-col items-center">
+        <span class="text-sm text-gray-500">Total Granjas</span>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold">12</span>
+          <i class="pi pi-building text-green-600 text-lg"></i>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card class="shadow-sm">
+      <div class="flex flex-col items-center">
+        <span class="text-sm text-gray-500">Lotes Activos</span>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold">48</span>
+          <i class="pi pi-box text-blue-600 text-lg"></i>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card class="shadow-sm">
+      <div class="flex flex-col items-center">
+        <span class="text-sm text-gray-500">Entradas Recientes</span>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold">156</span>
+          <i class="pi pi-truck text-orange-500 text-lg"></i>
+        </div>
+      </div>
+    </p-card>
+
+    <p-card class="shadow-sm">
+      <div class="flex flex-col items-center">
+        <span class="text-sm text-gray-500">Visitas Pendientes</span>
+        <div class="flex items-center gap-2">
+          <span class="text-2xl font-bold">8</span>
+          <i class="pi pi-calendar text-purple-600 text-lg"></i>
+        </div>
+      </div>
+    </p-card>
   </div>
 
+ <!-- Acciones Rápidas -->
+<p-card class="shadow-sm mt-6">
   <div class="mb-4">
-    <div class="text-xl font-semibold mb-2">Accions Ràpides</div>
-    <div class="text-gray-600 mb-2">Accions més utilitzades per gestionar la teva granja</div>
-    <div class="flex gap-2">
-      <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-        <i class="pi pi-plus"></i>
-        Crear Lot
-      </button>
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-        <i class="pi pi-sign-in"></i>
-        Afegir Entrada
-      </button>
-      <button class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded">
-        <i class="pi pi-calendar-plus"></i>
-        Programar Visita
-      </button>
-      <button class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded">
-        <i class="pi pi-chart-bar"></i>
-        Veure Informes
-      </button>
-    </div>
+    <h2 class="text-lg font-semibold">Acciones Rápidas</h2>
+    <p class="text-sm text-gray-500">
+      Accions més utilitzades per gestionar la teva granja
+    </p>
   </div>
 
-  <div>
-    <div class="flex justify-between items-center mb-2">
-      <div class="text-xl font-semibold">Activitat Recent</div>
-      <a href="#" class="text-blue-500">Veure tot ></a>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <!-- Crear Lote -->
+    <button
+      pButton
+      label="Crear Lote"
+      icon="pi pi-box"
+      class="!bg-green-600 hover:!bg-green-700 !border-none text-white font-semibold  rounded-lg flex flex-col items-center gap-2"
+    ></button>
+
+    <!-- Añadir Entrada -->
+    <button
+      pButton
+      label="Añadir Entrada"
+      icon="pi pi-truck"
+      class="!bg-blue-600 hover:!bg-blue-700 !border-none text-white font-semibold py-4 rounded-lg flex flex-col items-center gap-2"
+    ></button>
+
+    <!-- Programar Visita -->
+    <button
+      pButton
+      label="Programar Visita"
+      icon="pi pi-calendar"
+      class="!bg-purple-600 hover:!bg-purple-700 !border-none text-white font-semibold py-4 rounded-lg flex flex-col items-center gap-2"
+    ></button>
+
+    <!-- Ver Informes -->
+    <button
+      pButton
+      label="Ver Informes"
+      icon="pi pi-chart-bar"
+      class="!bg-orange-600 hover:!bg-orange-700 !border-none text-white font-semibold py-4 rounded-lg flex flex-col items-center gap-2"
+    ></button>
+  </div>
+</p-card>
+
+<!-- Actividad Reciente -->
+<p-card class="shadow-sm mt-6">
+  <div class="flex justify-between items-center mb-4">
+    <h2 class="text-lg font-semibold">Actividad Reciente</h2>
+    <a href="#" class="text-sm text-blue-600 hover:underline flex items-center gap-1">
+      Ver todo <i class="pi pi-angle-right text-xs"></i>
+    </a>
+  </div>
+
+  <div class="space-y-3">
+    <!-- Item 1 -->
+    <div class="flex items-start gap-3 bg-gray-50 rounded-lg p-3">
+      <i class="pi pi-box text-green-600 text-xl"></i>
+      <div>
+        <p class="text-sm font-medium">
+          Nou lot creat: LOT-2024-001
+        </p>
+        <p class="text-xs text-gray-500">
+          per Maria García • Hoy
+        </p>
+      </div>
     </div>
-    <div class="bg-white rounded-md shadow-md p-4 mb-2">
-      <i class="pi pi-home text-green-500"></i>
-      <span class="ml-2">Nou lot creat: LOT-2024-001</span>
-      <div class="text-gray-600 ml-6">per Maria García · Avui</div>
+
+    <!-- Item 2 -->
+    <div class="flex items-start gap-3 bg-gray-50 rounded-lg p-3">
+      <i class="pi pi-truck text-blue-600 text-xl"></i>
+      <div>
+        <p class="text-sm font-medium">
+          Entrada registrada: Fertilitzant orgànic
+        </p>
+        <p class="text-xs text-gray-500">
+          per Joan Martí • Ayer
+        </p>
+      </div>
     </div>
-    <div class="bg-white rounded-md shadow-md p-4 mb-2">
-      <i class="pi pi-truck text-blue-500"></i>
-      <span class="ml-2">Entrada registrada: Fertilitzant orgànic</span>
-      <div class="text-gray-600 ml-6">per Joan Martí · Ahir</div>
-    </div>
-    <div class="bg-white rounded-md shadow-md p-4 mb-2">
-      <i class="pi pi-calendar text-purple-500"></i>
-      <span class="ml-2">Visita programada: Inspecció fitosanitària</span>
-      <div class="text-gray-600 ml-6">per Anna López · Aquesta setmana</div>
+
+    <!-- Item 3 -->
+    <div class="flex items-start gap-3 bg-gray-50 rounded-lg p-3">
+      <i class="pi pi-calendar text-purple-600 text-xl"></i>
+      <div>
+        <p class="text-sm font-medium">
+          Visita programada: Inspecció fitosanitària
+        </p>
+        <p class="text-xs text-gray-500">
+          per Anna López • Esta semana
+        </p>
+      </div>
     </div>
   </div>
-</div>
+</p-card>
+

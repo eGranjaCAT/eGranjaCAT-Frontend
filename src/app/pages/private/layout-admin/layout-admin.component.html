@@ -1,7 +1,10 @@
-<section class="flex flex-col h-screen">
-    <app-header-bar></app-header-bar>
-    <div class="flex h-full ">
-        <app-nav-bar class="w-64 h-full fixed"></app-nav-bar>
-        <router-outlet class="ml-64"></router-outlet>
-    </div>
+<section class="grid grid-cols-[16rem_1fr] grid-rows-[auto_1fr] h-screen">
+    <!-- Header -->
+    <app-header-bar class="col-span-2"></app-header-bar>
+
+    <!-- Nav -->
+    <app-nav-bar class="h-full"></app-nav-bar>
+    <main class="overflow-y-auto p-6 ">
+        <router-outlet></router-outlet>
+    </main>
 </section>

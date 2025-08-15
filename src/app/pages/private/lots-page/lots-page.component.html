@@ -1,0 +1,52 @@
+<div class="flex justify-between items-center mb-6">
+  <h2 class="text-2xl font-bold">Lots</h2>
+  <button pButton label="Crear Lot" icon="pi pi-plus" 
+          class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+  </button>
+</div>
+
+<div class="bg-white p-4 rounded-xl shadow-sm">
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="text-lg font-semibold">Gestió de Lots</h3>
+    <div class="flex gap-2">
+      <button pButton icon="pi pi-search" label="Filtrar"
+              class="border border-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-100">
+      </button>
+      <button pButton icon="pi pi-download" label="Exportar"
+              class="border border-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-100">
+      </button>
+    </div>
+  </div>
+
+  <p-table [value]="lots" [responsiveLayout]="'scroll'" class="text-sm">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Codi</th>
+        <th>Granja</th>
+        <th>Superfície</th>
+        <th>Cultiu</th>
+        <th>Estat</th>
+        <th>Data Creació</th>
+        <th>Accions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-lot>
+      <tr>
+        <td>{{ lot.codi }}</td>
+        <td>{{ lot.granja }}</td>
+        <td>{{ lot.superficie }}</td>
+        <td>{{ lot.cultiu }}</td>
+        <td>
+          <p-tag [value]="lot.estat" [severity]="lot.estat === 'Actiu' ? 'success' : 'danger'"></p-tag>
+        </td>
+        <td>{{ lot.dataCreacio }}</td>
+        <td>
+          <button pButton label="Editar" 
+                  class="p-button-text text-blue-600 hover:underline"></button>
+          <button pButton label="Eliminar" 
+                  class="p-button-text text-red-600 hover:underline"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

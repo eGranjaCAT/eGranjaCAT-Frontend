@@ -1,3 +1,18 @@
 @import "tailwindcss";
 @plugin "tailwindcss-primeui";
 @import "primeicons/primeicons.css";
+
+.p-datatable thead > tr > th {
+  @apply bg-white text-gray-800 px-3 py-2 ; /* fondo blanco y padding reducido */
+}
+
+.p-datatable-tbody > tr > td {
+  @apply px-3 py-1; /* padding reducido en el body */
+}
+
+.p-datatable-wrapper {
+  @apply rounded-lg overflow-hidden border-2 border-gray-200; /* bordes redondeados */
+}
+.p-datatable-table{
+    @apply border-collapse border-gray-400 bg-red-300; /* colapsar bordes */
+}
