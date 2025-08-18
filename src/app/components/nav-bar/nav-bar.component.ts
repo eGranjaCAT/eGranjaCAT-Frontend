@@ -34,38 +34,38 @@ export class NavBarComponent {
     {
       label: 'Tauler',
       icon: 'pi pi-home',
-      routerLink: '/private/dashboard',
+      routerLink: '/private/dashboard-page',
       routerLinkActiveOptions: { exact: true }
     },
     {
       label: 'Granges',
       icon: 'pi pi-building',
-      routerLink: '/private/farm',
+      routerLink: '/private/farm-page',
     },
     {
       label: 'Lots',
       icon: 'pi pi-box',
-      routerLink: '/private/lots'
+      routerLink: '/private/lots-page',
     },
     {
       label: 'Entrades',
       icon: 'pi pi-truck',
-      routerLink: '/entrades'
+      routerLink: '/private/entrance-page',
     },
     {
       label: 'Visites',
       icon: 'pi pi-calendar',
-      routerLink: '/visites'
+      routerLink: '/private/visits-page'
     },
     {
       label: 'Usuaris',
       icon: 'pi pi-users',
-      routerLink: '/usuaris'
+      routerLink: '/private/user-page'
     },
     {
       label: 'GTR',
       icon: 'pi pi-database',
-      routerLink: '/gtr'
+      routerLink: '/private/gtr-page'
     },
     
   ];

@@ -9,12 +9,12 @@ export const routes: Routes = [
         
     },
     {
-        path: 'login',
+        path: 'login-page',
         loadComponent: () => import('./pages/private/login-page/login-page.component').then((m) => m.LoginPageComponent)
     },
     {
         path: '',
-        redirectTo: 'login',
+        redirectTo: 'login-page',
         pathMatch: 'full'
     }
 ];

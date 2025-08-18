@@ -42,6 +42,6 @@ export class LoginPageComponent {
   }));
 
   public onSubmit(): void {
-    this.router.navigate(['/private/dashboard']);
+    this.router.navigate(['/private/dashboard-page']);
   }
 }

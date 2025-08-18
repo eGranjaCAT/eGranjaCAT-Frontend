@@ -1,0 +1,48 @@
+<div class="flex justify-between items-center mb-6">
+  <h2 class="text-2xl font-bold">Entrades</h2>
+  <button pButton label="Afegir Entrada" icon="pi pi-plus"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg flex items-center gap-2">
+  </button>
+</div>
+
+<div class="bg-white p-4 rounded-xl shadow-sm">
+  <div class="flex justify-between items-center mb-4">
+    <h3 class="text-lg font-semibold">Gestió d'Entrades</h3>
+    <div class="flex gap-2">
+      <button pButton icon="pi pi-search" label="Filtrar"
+              class="border border-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-100">
+      </button>
+      <button pButton icon="pi pi-download" label="Exportar"
+              class="border border-gray-300 text-gray-700 px-3 py-1 rounded-lg hover:bg-gray-100">
+      </button>
+    </div>
+  </div>
+
+  <p-table [value]="entrances" [responsiveLayout]="'scroll'" class="text-sm">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Lot</th>
+        <th>Producte</th>
+        <th>Quantitat</th>
+        <th>Data</th>
+        <th>Proveïdor</th>
+        <th>Preu</th>
+        <th>Accions</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-entrada>
+      <tr>
+        <td>{{ entrada.lot }}</td>
+        <td>{{ entrada.producte }}</td>
+        <td>{{ entrada.quantitat }}</td>
+        <td>{{ entrada.data }}</td>
+        <td>{{ entrada.proveidor }}</td>
+        <td class="text-green-600 font-semibold">{{ entrada.preu }}</td>
+        <td>
+          <button pButton label="Editar" class="p-button-text text-blue-600 hover:underline"></button>
+          <button pButton label="Eliminar" class="p-button-text text-red-600 hover:underline"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
