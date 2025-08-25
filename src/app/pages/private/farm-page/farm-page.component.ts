@@ -1,11 +1,6 @@
 import { Component } from '@angular/core';
-import { SplitButtonModule } from 'primeng/splitbutton';
-import { NgClass } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
 import { FormsModule } from '@angular/forms';
-import { TableModule } from 'primeng/table';
-import { Menu, MenuModule } from 'primeng/menu';
-import { InputTextModule } from 'primeng/inputtext';
+
 interface Granja {
   id: number;
   nombre: string;
@@ -18,13 +13,7 @@ interface Granja {
 @Component({
   selector: 'app-farm-page',
   imports: [
-    SplitButtonModule,
-    NgClass,
-    ButtonModule,
     FormsModule,
-    TableModule,
-    InputTextModule,
-    Menu
   ],
   templateUrl: './farm-page.component.html',
   styleUrl: './farm-page.component.css'

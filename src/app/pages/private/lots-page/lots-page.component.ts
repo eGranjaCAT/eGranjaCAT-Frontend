@@ -1,16 +1,9 @@
 import { Component } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { Menu, MenuModule } from 'primeng/menu';
-import { TableModule } from 'primeng/table';
-import { TagModule } from 'primeng/tag';
+
 @Component({
   selector: 'app-lots-page',
   imports: [
-    TableModule,
-    TagModule,
-    ButtonModule,
-    MenuModule,
-    Menu
+    
   ],
   templateUrl: './lots-page.component.html',
   styleUrl: './lots-page.component.css'

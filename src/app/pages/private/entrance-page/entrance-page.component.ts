@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { TableModule } from 'primeng/table';
-
 @Component({
   selector: 'app-entrance-page',
   imports: [
-    TableModule,
-    ButtonModule
+    
   ],
   templateUrl: './entrance-page.component.html',
   styleUrl: './entrance-page.component.css'

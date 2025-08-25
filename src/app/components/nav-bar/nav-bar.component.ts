@@ -1,23 +1,13 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-import { InputTextModule } from 'primeng/inputtext';
-import { ButtonModule } from 'primeng/button';
-import { AvatarModule } from 'primeng/avatar';
-import { MenuItem } from 'primeng/api';
-import { Menu } from 'primeng/menu';
-import { MenuModule } from 'primeng/menu';
 
 @Component({
   selector: 'app-nav-bar',
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule,
-    InputTextModule,
-    ButtonModule,
-    AvatarModule,
-    MenuModule
+    RouterModule
   ],
   templateUrl: "./nav-bar.component.html",
   styles: [`
@@ -28,56 +18,51 @@ import { MenuModule } from 'primeng/menu';
   `]
 })
 export class NavBarComponent {
-  @ViewChild('userMenu') menu!: Menu;
-
-  items: MenuItem[] = [
+  items = [
     {
       label: 'Tauler',
-      icon: 'pi pi-home',
+      icon: 'home', // Cambia el icono según la nueva librería
       routerLink: '/private/dashboard-page',
       routerLinkActiveOptions: { exact: true }
     },
     {
       label: 'Granges',
-      icon: 'pi pi-building',
+      icon: 'building',
       routerLink: '/private/farm-page',
     },
     {
       label: 'Lots',
-      icon: 'pi pi-box',
+      icon: 'box',
       routerLink: '/private/lots-page',
     },
     {
       label: 'Entrades',
-      icon: 'pi pi-truck',
+      icon: 'truck',
       routerLink: '/private/entrance-page',
     },
     {
       label: 'Visites',
-      icon: 'pi pi-calendar',
+      icon: 'calendar',
       routerLink: '/private/visits-page'
     },
     {
       label: 'Usuaris',
-      icon: 'pi pi-users',
+      icon: 'users',
       routerLink: '/private/user-page'
     },
     {
       label: 'GTR',
-      icon: 'pi pi-database',
+      icon: 'database',
       routerLink: '/private/gtr-page'
     },
-    
   ];
 
   toggleMenu(event: Event) {
-    if (this.menu) {
-      this.menu.toggle(event);
-    }
+    // Implementa la lógica del menú con la nueva librería aquí si es necesario
   }
 
   logout() {
-    // Implement logout logic here
+    // Implementa la lógica de logout aquí
     console.log('Logout clicked');
   }
 }
