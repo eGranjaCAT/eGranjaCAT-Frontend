@@ -1,0 +1,41 @@
+<form [formGroup]="form" (ngSubmit)="onGuardar()" class="flex flex-col gap-4 p-4">
+
+  <div>
+    <label>Nombre</label>
+    <input pInputText type="text" formControlName="nombre" class="w-full" />
+    <small *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="text-red-500">Nombre obligatorio</small>
+  </div>
+
+  <div>
+    <label>Ubicación</label>
+    <input pInputText type="text" formControlName="ubicacion" class="w-full" />
+  </div>
+
+  <div>
+    <label>Teléfono</label>
+    <input pInputText type="text" formControlName="telefono" class="w-full" />
+  </div>
+
+  <div>
+    <label>Email</label>
+    <input pInputText type="email" formControlName="email" class="w-full" />
+  </div>
+
+  <div>
+    <label>Nº de Lotes</label>
+    <input pInputText type="number" formControlName="lotes" class="w-full" />
+  </div>
+
+  <div>
+    <label>Estado</label>
+    <select formControlName="estado" class="w-full p-2 border rounded">
+      <option value="Activa">Activa</option>
+      <option value="Inactiva">Inactiva</option>
+    </select>
+  </div>
+
+  <div class="flex justify-end mt-4">
+    <p-button label="Guardar" icon="pi pi-check" type="submit" [disabled]="form.invalid"></p-button>
+  </div>
+
+</form>

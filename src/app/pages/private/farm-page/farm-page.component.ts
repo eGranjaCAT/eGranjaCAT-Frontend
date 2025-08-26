@@ -6,6 +6,10 @@ import { FormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { Menu, MenuModule } from 'primeng/menu';
 import { InputTextModule } from 'primeng/inputtext';
+import { ReactiveFormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
+import { FarmFormComponent } from '../farm-form/farm-form.component';
+
 interface Granja {
   id: number;
   nombre: string;
@@ -15,6 +19,7 @@ interface Granja {
   lotes: number;
   estado: 'Activa' | 'Inactiva';
 }
+
 @Component({
   selector: 'app-farm-page',
   imports: [
@@ -22,37 +27,48 @@ interface Granja {
     NgClass,
     ButtonModule,
     FormsModule,
+    ReactiveFormsModule,
     TableModule,
     InputTextModule,
-    Menu
+    Menu,
+    DialogModule,
+    FarmFormComponent
   ],
   templateUrl: './farm-page.component.html',
   styleUrl: './farm-page.component.css'
 })
 export class FarmPageComponent {
+
+  // ---------- VARIABLES DE ESTADO ----------
   granjas: Granja[] = [
     { id: 1, nombre: 'Granja Can Martí', ubicacion: 'Girona', telefono: '+34 972 123 456', email: 'info@canmarti.cat', lotes: 12, estado: 'Activa' },
     { id: 2, nombre: 'Explotació Agrícola Solà', ubicacion: 'Lleida', telefono: '+34 973 987 654', email: 'contacte@sola.cat', lotes: 8, estado: 'Activa' },
     { id: 3, nombre: 'Granja Ecològica Verdaguer', ubicacion: 'Tarragona', telefono: '+34 977 456 789', email: 'eco@verdaguer.cat', lotes: 5, estado: 'Inactiva' }
   ];
-  items = [
-    {
-      label: 'Editar',
-      icon: 'pi pi-pencil'
-    },
-    {
-      label: 'Eliminar',
-      icon: 'pi pi-trash'
-    },
-    {
-      label: 'Detalles',
-      icon: 'pi pi-info-circle'
-    }
-  ]
-    ;
-  filtro: string = '';
+  
   granjasFiltradas: Granja[] = [...this.granjas];
+  filtro: string = '';
+  
+  mostrarFormulario: boolean = false;
+  mostrarConfirmarBorrar: boolean = false;
+  granjaAEliminar?: Granja;
 
+  items = [
+    { label: 'Editar', icon: 'pi pi-pencil' },
+    { label: 'Eliminar', icon: 'pi pi-trash' },
+    { label: 'Detalles', icon: 'pi pi-info-circle' }
+  ];
+
+  // ---------- GETTERS ----------
+  get granjasActivasCount(): number {
+    return this.granjas.filter(g => g.estado === 'Activa').length;
+  }
+
+  get granjasInactivasCount(): number {
+    return this.granjas.filter(g => g.estado === 'Inactiva').length;
+  }
+
+  // ---------- MÉTODOS PRINCIPALES ----------
   filtrarGranjas() {
     const f = this.filtro.toLowerCase();
     this.granjasFiltradas = this.granjas.filter(g =>
@@ -62,34 +78,39 @@ export class FarmPageComponent {
     );
   }
 
-  nuevaGranja() {
-    console.log('Crear nueva granja');
+  nuevaGranja(granja: Granja) {
+    const idNuevo = this.granjas.length > 0 
+                    ? Math.max(...this.granjas.map(g => g.id)) + 1 
+                    : 1;
+    const nueva = { ...granja, id: idNuevo };
+    this.granjas.push(nueva);
+    this.filtrarGranjas();
+    this.mostrarFormulario = false;
   }
 
-  editarGranja(g: Granja) {
-    console.log('Editar', g);
+  editarGranja(granja: Granja) {
+    console.log('Editar', granja);
   }
 
-  eliminarGranja(g: Granja) {
-    console.log('Eliminar', g);
+  eliminarGranja() {
+    if (!this.granjaAEliminar) return;
+    this.granjas = this.granjas.filter(g => g.id !== this.granjaAEliminar!.id);
+    this.filtrarGranjas();
+    this.granjaAEliminar = undefined;
+    this.mostrarConfirmarBorrar = false;
   }
 
-  get granjasActivasCount(): number {
-    return Array.isArray(this.granjas)
-      ? this.granjas.filter(g => g.estado === 'Activa').length
-      : 0;
+  confirmarEliminar(granja: Granja) {
+    this.granjaAEliminar = granja;
+    this.mostrarConfirmarBorrar = true;
   }
 
-  get granjasInactivasCount(): number {
-    return Array.isArray(this.granjas)
-      ? this.granjas.filter(g => g.estado === 'Inactiva').length
-      : 0;
-  }
-
+  // ---------- MÉTODOS AUXILIARES ----------
   getMenuItems(granja: Granja) {
     return [
       { label: 'Editar', icon: 'pi pi-pencil', command: () => this.editarGranja(granja) },
-      { label: 'Eliminar', icon: 'pi pi-trash', command: () => this.eliminarGranja(granja) }
+      { label: 'Eliminar', icon: 'pi pi-trash', command: () => this.confirmarEliminar(granja) }
     ];
   }
+
 }
