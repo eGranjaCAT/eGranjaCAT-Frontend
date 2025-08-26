@@ -1,2 +1,32 @@
-<h1 class="text-sm text-red-300">Hola</h1>
-<button ubButton>Login</button>
+<div class="flex justify-center items-center h-screen">
+    <section class="w-full max-w-sm" hlmCard>
+        <div hlmCardHeader>
+            <h3 hlmCardTitle>Bienvenido a eGranjaCat</h3> 
+        </div>
+
+        <div hlmCardContent>
+            <form>
+                <div class="flex flex-col gap-6">
+                    <div class="grid gap-2">
+                        <label hlmLabel for="email">Correo electronico</label>
+                        <input type="email" id="email" placeholder="m@example.com" required hlmInput />
+                    </div>
+
+                    <div class="grid gap-2">
+                        <div class="flex items-center">
+                            <label hlmLabel for="password">Contraseña</label>
+                            <a href="#"  class="ml-auto inline-block text-sm underline-offset-4 hover:underline"> 
+                                ¿Olvidaste tu contraseña?
+                            </a>
+                        </div>
+                        <input type="password" id="password" placeholder="***********" hlmInput />
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div hlmCardFooter class="flex-col gap-2">
+            <button hlmBtn type="submit" class="w-full">Ingresar</button>
+        </div>
+    </section>
+</div>
