@@ -1,8 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
 
 export interface Granja {
   id: number;
@@ -17,7 +15,7 @@ export interface Granja {
 @Component({
   selector: 'app-farm-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonModule, InputTextModule],
+  imports: [CommonModule, ReactiveFormsModule],
   templateUrl: './farm-form.component.html',
   styleUrls: ['./farm-form.component.css']
 })

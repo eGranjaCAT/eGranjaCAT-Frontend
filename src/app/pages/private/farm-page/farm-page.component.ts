@@ -1,10 +1,6 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { TableModule } from 'primeng/table';
-import { Menu, MenuModule } from 'primeng/menu';
-import { InputTextModule } from 'primeng/inputtext';
 import { ReactiveFormsModule } from '@angular/forms';
-import { DialogModule } from 'primeng/dialog';
 import { FarmFormComponent } from '../farm-form/farm-form.component';
 
 
@@ -22,11 +18,7 @@ interface Granja {
   selector: 'app-farm-page',
   imports: [
     FormsModule,
-    ReactiveFormsModule,
-    TableModule,
-    InputTextModule,
-    Menu,
-    DialogModule,
+    ReactiveFormsModule, 
     FarmFormComponent
   ],
   templateUrl: './farm-page.component.html',
