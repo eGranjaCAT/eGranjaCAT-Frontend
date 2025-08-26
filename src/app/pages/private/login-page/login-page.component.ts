@@ -1,14 +1,18 @@
-import { Component, OnInit, inject, Renderer2, ChangeDetectionStrategy, signal, WritableSignal } from '@angular/core';
+import { Component, inject, ChangeDetectionStrategy, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ButtonModule } from 'primeng/button';
-import { CardModule } from 'primeng/card';
-import { CheckboxModule } from 'primeng/checkbox';
-import { InputTextModule } from 'primeng/inputtext';
-import { StyleClassModule } from 'primeng/styleclass';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-
-import { SelectButtonModule } from 'primeng/selectbutton';
 import { Router } from '@angular/router';
+import { HlmButton } from '@spartan-ng/helm/button';
+import {
+  HlmCardContent,
+  HlmCardDescription,
+  HlmCard,
+  HlmCardFooter,
+  HlmCardHeader,
+  HlmCardTitle,
+  HlmCardAction
+} from "@spartan-ng/helm/card"
+import { HlmInput } from '@spartan-ng/helm/input';
 
 @Component({
   selector: 'app-login-page',
@@ -17,13 +21,15 @@ import { Router } from '@angular/router';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    ButtonModule,
-    CardModule,
-    CheckboxModule,
-    InputTextModule,
-    StyleClassModule,
-
-    SelectButtonModule
+    HlmButton,
+    HlmCard,
+    HlmCardHeader,
+    HlmCardTitle,
+    HlmCardDescription,
+    HlmCardContent,
+    HlmCardFooter,
+    HlmCardAction,
+    HlmInput
   ],
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.css'

@@ -4,8 +4,8 @@ This is the frontend for the **eGranjaCAT** application, built with Angular. Thi
 
 ## Technology Stack
 
-*   **Framework**: [Angular](https://angular.dev/) v19
-*   **UI Library**: [PrimeNG](https://primeng.org/)
+*   **Framework**: [Angular](https://angular.dev/) v20
+*   **UI Library**: [SpartanUI](https://www.spartan.ng/)
 *   **CSS Framework**: [Tailwind CSS](https://tailwindcss.com/)
 *   **Mobile Development**: [Capacitor](https://capacitorjs.com/)
 

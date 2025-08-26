@@ -1,11 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { TableModule } from 'primeng/table';
 
 @Component({
   selector: 'app-user-page',
   imports: [
-    TableModule,
     CommonModule
   ],
   templateUrl: './user-page.component.html',
