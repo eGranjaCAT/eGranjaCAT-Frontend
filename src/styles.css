@@ -4,6 +4,17 @@
 @import '@angular/cdk/overlay-prebuilt.css';
 
 
+.content-input {
+  @apply relative flex items-center w-full;
+
+}
+.content-input > ng-icon {
+  @apply absolute left-4 text-gray-400 pointer-events-none;
+}
+.content-input input {
+  @apply pl-9 w-full;
+}
+
 :root {
 --font-sans: ''
 }
