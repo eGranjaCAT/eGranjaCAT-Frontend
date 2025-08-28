@@ -12,6 +12,8 @@ import {
 } from "@spartan-ng/helm/card"
 import { HlmInput } from '@spartan-ng/helm/input';
 import { FarmFormComponent, Granja } from '../farm-form/farm-form.component';
+import { HlmFormFieldModule } from '@spartan-ng/helm/form-field';
+import { HlmError } from '@spartan-ng/helm/form-field';
 
 @Component({
   selector: 'app-login-page',
@@ -27,7 +29,9 @@ import { FarmFormComponent, Granja } from '../farm-form/farm-form.component';
     HlmCardContent,
     HlmCardFooter,
     HlmInput,
-    FarmFormComponent
+    FarmFormComponent,
+    HlmFormFieldModule,
+    HlmError
   ],
   templateUrl: './login-page.component.html',
   styleUrls: ['./login-page.component.css']
@@ -40,9 +44,13 @@ export class LoginPageComponent {
   public loginForm = signal<FormGroup>(this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required, Validators.minLength(6)]],
-    remember: [false],
-    language: ['esp']
   }));
+
+  public statusButtonLanguage = signal(false);
+
+  public toggleLanguage(): void {
+    this.statusButtonLanguage.set(!this.statusButtonLanguage());
+  }
 
   // Flag para mostrar el formulario de granja
   public mostrarFormGranja = signal(false);
