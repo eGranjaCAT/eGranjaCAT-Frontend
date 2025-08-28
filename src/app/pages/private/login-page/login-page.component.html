@@ -1,32 +1,59 @@
 <div class="flex justify-center items-center h-screen">
-    <section class="w-full max-w-sm" hlmCard>
-        <div hlmCardHeader>
-            <h3 hlmCardTitle>Bienvenido a eGranjaCat</h3> 
+  <section class="w-full max-w-sm" hlmCard>
+    <div hlmCardHeader>
+      <h3 hlmCardTitle>Bienvenido a eGranjaCat</h3>
+    </div>
+
+    <div hlmCardContent>
+      <form [formGroup]="loginForm()" (ngSubmit)="onSubmit()">
+        <div class="flex flex-col gap-6">
+          <div class="grid gap-2">
+            <label hlmLabel for="email">Correo electrónico</label>
+            <input
+              type="email"
+              id="email"
+              placeholder="m@example.com"
+              hlmInput
+              formControlName="email"
+            />
+          </div>
+
+          <div class="grid gap-2">
+            <div class="flex items-center">
+              <label hlmLabel for="password">Contraseña</label>
+              <a
+                href="#"
+                class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
+              >
+                ¿Olvidaste tu contraseña?
+              </a>
+            </div>
+            <input
+              type="password"
+              id="password"
+              placeholder="***********"
+              hlmInput
+              formControlName="password"
+            />
+          </div>
         </div>
 
-        <div hlmCardContent>
-            <form>
-                <div class="flex flex-col gap-6">
-                    <div class="grid gap-2">
-                        <label hlmLabel for="email">Correo electronico</label>
-                        <input type="email" id="email" placeholder="m@example.com" required hlmInput />
-                    </div>
-
-                    <div class="grid gap-2">
-                        <div class="flex items-center">
-                            <label hlmLabel for="password">Contraseña</label>
-                            <a href="#"  class="ml-auto inline-block text-sm underline-offset-4 hover:underline"> 
-                                ¿Olvidaste tu contraseña?
-                            </a>
-                        </div>
-                        <input type="password" id="password" placeholder="***********" hlmInput />
-                    </div>
-                </div>
-            </form>
+        <div hlmCardFooter class="flex-col gap-2 mt-4">
+          <button hlmBtn type="submit" class="w-full">Ingresar</button>
         </div>
+      </form>
+    </div>
+  </section>
+</div>
 
-        <div hlmCardFooter class="flex-col gap-2">
-            <button hlmBtn type="submit" class="w-full">Ingresar</button>
-        </div>
-    </section>
+<!-- Modal del formulario de granja -->
+<div
+  *ngIf="mostrarFormGranja()"
+  class="fixed inset-0 flex justify-center items-center bg-black/50 z-50"
+>
+  <div class="bg-white p-4 rounded shadow-lg w-full max-w-lg">
+<app-farm-form
+  (guardar)="onGuardarGranja($event)"
+  (cancelarForm)="mostrarFormGranja.set(false)"
+></app-farm-form>
 </div>

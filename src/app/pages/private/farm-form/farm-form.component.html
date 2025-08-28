@@ -1,40 +1,76 @@
-<form [formGroup]="form" (ngSubmit)="onGuardar()" class="flex flex-col gap-4 p-4">
+<div class="fixed inset-0 flex justify-center items-center bg-black/50 z-50">
+  <div class="w-full max-w-lg bg-white p-8 rounded-2xl">
+    <h3 class="text-xl font-semibold mb-6 text-center">Formulario de Granja</h3>
 
-  <div>
-    <label>Nombre</label>
-    <input pInputText type="text" formControlName="nombre" class="w-full" />
-    <small *ngIf="form.get('nombre')?.invalid && form.get('nombre')?.touched" class="text-red-500">Nombre obligatorio</small>
+    <form
+      [formGroup]="form"
+      (ngSubmit)="onGuardar()"
+      class="flex flex-col gap-4"
+    >
+      <div>
+        <label hlmLabel>Nombre</label>
+        <input type="text" formControlName="nombre" hlmInput />
+      </div>
+
+      <div>
+        <label hlmLabel>Ubicación</label>
+        <input type="text" formControlName="ubicacion" hlmInput />
+      </div>
+
+      <div>
+        <label hlmLabel>Teléfono</label>
+        <input type="text" formControlName="telefono" hlmInput />
+      </div>
+
+      <div>
+        <label hlmLabel>Email</label>
+        <input type="email" formControlName="email" hlmInput />
+      </div>
+
+      <div>
+        <label hlmLabel>Nº de Lotes</label>
+        <input type="number" formControlName="lotes" hlmInput min="0" />
+      </div>
+
+      <div class="flex items-center gap-4">
+        <label hlmLabel>Estado</label>
+        <button
+          type="button"
+          class="px-4 py-2 rounded font-medium
+         text-white
+         {{
+            form.get('estado')?.value === 'Activa'
+              ? 'bg-green-500 hover:bg-green-600'
+              : 'bg-red-500 hover:bg-red-600'
+          }}"
+          (click)="toggleEstado()"
+        >
+          {{ form.get("estado")?.value }}
+        </button>
+      </div>
+
+      <div class="flex justify-end gap-4 mt-4">
+        <button
+          type="submit"
+          hlmBtn
+          class="bg-black text-white hover:bg-gray-600 flex items-center gap-2"
+        >
+          <ng-icon hlm name="lucideSave" class="text-white" />
+
+          Guardar
+        </button>
+
+        <button
+          type="button"
+          hlmBtn
+          variant="secondary"
+          class="bg-white text-black border border-black hover:bg-gray-200 flex items-center gap-1"
+          (click)="cancelar()"
+        >
+          <ng-icon hlm name="lucideX" class="text-black" />
+          <span class="-mt-0.5">Cancelar</span>
+        </button>
+      </div>
+    </form>
   </div>
-
-  <div>
-    <label>Ubicación</label>
-    <input pInputText type="text" formControlName="ubicacion" class="w-full" />
-  </div>
-
-  <div>
-    <label>Teléfono</label>
-    <input pInputText type="text" formControlName="telefono" class="w-full" />
-  </div>
-
-  <div>
-    <label>Email</label>
-    <input pInputText type="email" formControlName="email" class="w-full" />
-  </div>
-
-  <div>
-    <label>Nº de Lotes</label>
-    <input pInputText type="number" formControlName="lotes" class="w-full" />
-  </div>
-
-  <div>
-    <label>Estado</label>
-    <select formControlName="estado" class="w-full p-2 border rounded">
-      <option value="Activa">Activa</option>
-      <option value="Inactiva">Inactiva</option>
-    </select>
-  </div>
-
-  <div class="flex justify-end mt-4">
-  </div>
-
-</form>
+</div>
