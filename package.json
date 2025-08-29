@@ -22,6 +22,7 @@
     "@ng-icons/lucide": "^32.1.0",
     "@spartan-ng/brain": "^0.0.1-alpha.503",
     "@spartan-ng/ui-core": "^0.0.1-alpha.380",
+    "@spartan-ng/ui-separator-brain": "^0.0.1-alpha.374",
     "@tailwindcss/postcss": "^4.1.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",

@@ -1,1 +1,45 @@
+<section class="flex h-16 items-center justify-between  px-4 border-b">
+    <div>
+        <h2>eGranjaCAT</h2>
+        <span>Tu granja, optimizada</span>
+        <brn-separator hlmSeparator orientation="vertical" />
+        <brn-separator decorative hlmSeparator orientation="vertical" />
+    </div>
+    <hlm-menu-separator />
+    <div>
+        <div class="flex w-full items-center justify-center pt-[20%]">
+            <button hlmBtn variant="outline" align="end" [brnMenuTriggerFor]="menu">Filtrar</button>
+        </div>
+        <ng-template #menu>
+            <hlm-menu class="w-56">
+                <hlm-menu-label>Filtros</hlm-menu-label>
 
+                <hlm-menu-group>
+                    <button hlmMenuItem>
+                        <span>Todas las granjas</span>
+                    </button>
+
+                    <button hlmMenuItem>
+                        <span>Granja 1</span>
+                    </button>
+
+                    <button hlmMenuItem>
+                        <span>Granja 2</span>
+                    </button>
+
+                    <button hlmMenuItem>
+                        <span>Granja 3</span>
+                    </button>
+                </hlm-menu-group>
+            </hlm-menu>
+        </ng-template>
+    </div>
+    <div>
+        <button>
+            CAT
+        </button>
+        <button>
+            ESP
+        </button>
+    </div>
+</section>
