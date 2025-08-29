@@ -1,59 +1,95 @@
-<div class="flex justify-center items-center h-screen">
-  <section class="w-full max-w-sm" hlmCard>
-    <div hlmCardHeader>
-      <h3 hlmCardTitle>Bienvenido a eGranjaCat</h3>
-    </div>
+<section class="flex flex-col items-center justify-center min-h-screen gap-4">
 
-    <div hlmCardContent>
-      <form [formGroup]="loginForm()" (ngSubmit)="onSubmit()">
-        <div class="flex flex-col gap-6">
-          <div class="grid gap-2">
-            <label hlmLabel for="email">Correo electrónico</label>
-            <input
-              type="email"
-              id="email"
-              placeholder="m@example.com"
-              hlmInput
-              formControlName="email"
-            />
-          </div>
+  <!-- Selector de idioma  -->
+  <div class="flex gap-2 ">
+    <button (click)="toggleLanguage()" hlmBtn [variant]="statusButtonLanguage() === true ? 'outline' : 'default' "
+      class="cursor-pointer">CAT</button>
+    <button (click)="toggleLanguage()" hlmBtn [variant]="statusButtonLanguage() === false ? 'outline' : 'default' "
+      class="cursor-pointer">ESP</button>
+  </div>
 
-          <div class="grid gap-2">
-            <div class="flex items-center">
-              <label hlmLabel for="password">Contraseña</label>
-              <a
-                href="#"
-                class="ml-auto inline-block text-sm underline-offset-4 hover:underline"
-              >
-                ¿Olvidaste tu contraseña?
-              </a>
+  <!--  Tarjeta del formulario -->
+  <div>
+    <section hlmCard>
+      <div hlmCardHeader>
+        <h3 hlmCardTitle>Bienvenido a eGranjaCat</h3>
+      </div>
+
+      <div class="w-80" hlmCardContent>
+        <form [formGroup]="loginForm()" (ngSubmit)="submitLogin()">
+          <div class="flex flex-col gap-2">
+
+            <!-- Campo de correo -->
+            <div class="grid gap-2">
+              <label hlmLabel for="email">Correo electrónico</label>
+              <hlm-form-field>
+                <div class="content-input">
+                  <ng-icon hlm size="sm" name="lucideMail"
+                    class="absolute left-3 text-gray-400 pointer-events-none"></ng-icon>
+
+                  <input type="email" id="email" placeholder="m@example.com" hlmInput formControlName="email"
+                    class="pl-8 w-full" />
+                </div>
+
+                <!-- Errores -->
+                @if(loginForm().get("email")?.hasError("required") && loginForm().get("email")?.touched){
+                <hlm-error>El correo es obligatorio</hlm-error>
+                }
+                @if(loginForm().get("email")?.hasError("email") && loginForm().get("email")?.touched){
+                <hlm-error>El correo es inválido</hlm-error>
+                }
+              </hlm-form-field>
+
+
             </div>
-            <input
-              type="password"
-              id="password"
-              placeholder="***********"
-              hlmInput
-              formControlName="password"
-            />
+
+            <!-- Campo de contraseña -->
+            <div class="grid gap-2">
+              <div class="flex items-center">
+                <label hlmLabel for="password">Contraseña</label>
+              </div>
+              <hlm-form-field>
+                <div class="content-input">
+                  <ng-icon hlm size="sm" name="lucideLock"></ng-icon>
+                  <input [type]=" mostrarContrasena() ? 'text' : 'password'" id="password" placeholder="***********"
+                    hlmInput formControlName="password" />
+
+                  <!-- Boton para mostrar/ocultar contraseña -->
+                  <button type="button" class="absolute right-3 pt-[1px]" (click)="toggleMostrarContrasena()">
+                    @if(mostrarContrasena()) {
+                    <ng-icon hlm size="sm" name="lucideEyeOff" class="text-black"></ng-icon>
+                    }@else {
+                    <ng-icon hlm size="sm" name="lucideEye" class="text-black"></ng-icon>
+                    }
+
+                  </button>
+                </div>
+
+                <!-- Errores -->
+                @if (loginForm().get("password")?.hasError("required") && loginForm().get("password")?.touched) {
+                <hlm-error>La contraseña es obligatoria</hlm-error>
+                }
+                @if(loginForm().get("password")?.hasError("minlength") && loginForm().get("password")?.touched){
+                <hlm-error>La contraseña debe tener al menos 6 caracteres</hlm-error>
+                }
+              </hlm-form-field>
+            </div>
           </div>
-        </div>
 
-        <div hlmCardFooter class="flex-col gap-2 mt-4">
-          <button hlmBtn type="submit" class="w-full">Ingresar</button>
-        </div>
-      </form>
-    </div>
-  </section>
-</div>
+          <div class="mt-6 w-full">
+            <button hlmBtn type="submit" class="cursor-pointer w-full">Ingresar</button>
+          </div>
+          <a href="#" class="text-center inline-block mt-3 text-sm underline-offset-4 w-full hover:underline">
+            ¿Olvidaste tu contraseña?
+          </a>
 
+        </form>
+      </div>
+    </section>
+  </div>
+</section>
 <!-- Modal del formulario de granja -->
-<div
-  *ngIf="mostrarFormGranja()"
-  class="fixed inset-0 flex justify-center items-center bg-black/50 z-50"
->
+<div *ngIf="mostrarFormGranja()" class="fixed inset-0 flex justify-center items-center bg-black/50 z-50">
   <div class="bg-white p-4 rounded shadow-lg w-full max-w-lg">
-<app-farm-form
-  (guardar)="onGuardarGranja($event)"
-  (cancelarForm)="mostrarFormGranja.set(false)"
-></app-farm-form>
-</div>
+    <app-farm-form (guardar)="onGuardarGranja($event)" (cancelarForm)="mostrarFormGranja.set(false)"></app-farm-form>
+  </div>
